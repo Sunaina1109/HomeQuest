@@ -86,3 +86,28 @@ nav{
 .fa-heart{
     width: 20rem;
 }
+.edit-btn{
+    background-color: brown !important;
+    border: none;
+}
+/* show img */
+.show-img{
+height: 60vh;
+width: 60vh;
+justify-items: center;
+}
+.btns{
+display: flex;
+}
+.show-card{
+    padding-left: 0;
+    padding-right: 0;
+}
+.listing-detail{
+    padding-left: 80px;
+    text-decoration: underline;
+}
+.rating{
+    text-decoration: underline;
+    padding: 10px;
+}
