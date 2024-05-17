@@ -11,7 +11,7 @@ const ejsMate= require("ejs-mate"); //using for repeating tamplates in all pages
 
 const Mongo_URL= "mongodb://127.0.0.1:27017/wonderlust";
 // //this all code to connect my mongodb 
-main().then((res)=>{
+main().then((listing)=>{
     console.log("successfully run")
 })
 .catch((err)=>{
@@ -58,7 +58,17 @@ app.post("/listings", async(req, res)=>{
   res.redirect("/listings")
 });
 
-//Update Route
+//edit Route
+app.get('/listings/:id/edit', async (req, res) => {
+  try {
+    const listing = await Listing.findById(req.params.id);
+    res.render('listings/edit', { listing, listing_id: req.params.id });
+  } catch (error) {
+    res.status(500).send('Error fetching listing');
+  }
+});
+
+// update Route
 app.put("/listings/:id", async (req, res) => {
   let { id } = req.params;
   await Listing.findByIdAndUpdate(id, {...req.body.listing });
@@ -95,7 +105,7 @@ app.delete("/listings/:id", async (req, res) => {
 // });
 
 app.listen(port, ()=>{
-    console.log("port is listen");
+    console.log("port is listen 8081");
 });
 
 
